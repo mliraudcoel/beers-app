@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css?family=Changa&display=swap');
+
+h1{
+  color:orangered;
+  font-family: 'Changa', sans-serif;
+  font-size:70px;
+}
+
+h2{
+  font-family: 'Changa', sans-serif;
+}
+
+.beerList{
+  margin-top:20px;
+}
+
+.catalog{
+  margin-top: 70px;
+  margin-bottom: 70px;
+}
+
+/* div{
+  height:0px;
+  width:1px;
+  border-bottom:1px solid #000;
+  
+  -webkit-animation: increase 3s;
+  -moz-animation:    increase 3s; 
+  -o-animation:      increase 3s; 
+  animation:         increase 3s; 
+  animation-fill-mode: forwards;
+} */
+
+@keyframes increase {
+    100% {
+        width: 300px;
+    }
+}
+

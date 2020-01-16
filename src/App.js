@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
-import ListBeers from './Components/ListBeers';
-import Beer from './Components/Beer';
+import ListBeers from './Components/ListBeers/ListBeers';
+import Beer from './Components/Beer/Beer';
 import axios from 'axios';
 import CtxBeers from './Components/CtxBeers';
 import { Switch, Route } from 'react-router-dom';

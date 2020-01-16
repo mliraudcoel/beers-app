@@ -1,0 +1,18 @@
+input{
+  width:50%;
+  height:70px;
+}
+
+h3{
+  color:orangered;
+}
+
+img{
+  height:500px;
+}
+
+.beer{
+  display:flex;
+  width:50%;
+  flex-direction: row;
+}
