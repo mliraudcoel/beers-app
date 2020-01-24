@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import CtxBeers from '../CtxBeers';
 import { useParams } from 'react-router-dom';
 import './Beer.css';
@@ -15,20 +15,31 @@ const Beer = () => {
     rate:''
   });
   console.log(form)
-  // const [comment, setComment] = useState({
-  //   pseudo:'',
-  //   comment:'',
-  //   rate:''
-  // });
+  const [comments, setComments] = useState([{
+    pseudo:'',
+    comment:'',
+    rate:''
+  }]);
 
-  const addComment = () => {
+  const addComment = (event) => {
+  event.preventDefault();
    axios.post(`${addressAPI}/comments`, {
      pseudo: form.pseudo,
      comment: form.comment,
      rate: form.rate,
+     beer_id: beerId,
    });
-   console.log('ok')
   };
+
+  useEffect(() => {
+    axios.get(`${addressAPI}/comments/${beerId}`)
+    .then(response => {
+      console.log(response.data);
+      setComments(response.data);
+    })
+  },[]);
+
+  console.log(comments);
 
   return(
     <div>
@@ -54,7 +65,7 @@ const Beer = () => {
         </div>
         <label htmlFor="h4 mb-4"> Votre note </label>
         <div className="container-input">
-          <select name="rate" id="rate-selected" onChange={(event) => setForm({...form, category:event.target.value})} value={form.rate}>
+          <select name="rate" id="rate-selected" onChange={(event) => setForm({...form, rate:event.target.value})} value={form.rate}>
           <option value="">Notez sur 10</option>
           <option value="0">0</option>
           <option value="1">1</option>
@@ -73,6 +84,15 @@ const Beer = () => {
           <button onClick={addComment}>Envoyer</button>
         </div>
       </form>
+      {comments.map((comment, index) => {
+        return(
+          <div key={index}>
+            <h3>{comment.pseudo}</h3>
+            <p>{comment.comment}</p>
+            <p>{comment.rate}</p>
+          </div>
+        )
+      })}
     </div>
   );
 };
