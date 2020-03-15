@@ -45,3 +45,43 @@ button{
   background-color: #006699;
   color:white;
 }
+
+.comment{
+  display:grid;
+  grid-template-columns: 200px;
+  grid-template-rows: 80px;
+  align-items: center;
+  background-color: #F7F7F7;
+  color:black;
+  width:70%;
+  font-size:0.7em;
+  padding-left:20px;
+  margin-bottom:10px;
+  padding-bottom:20px;
+  margin-right:auto;
+  margin-left:auto;
+}
+
+.comments{
+  background-color: white;
+  margin:auto;
+  padding-top:10px;
+  padding-bottom:10px;
+}
+
+.item3{
+  grid-column-start: 1;
+  grid-column-end: 3;
+  justify-self: left;
+}
+
+.pseudo{
+  font-size: 0.9em;
+  color:orangered;
+  justify-self: left;
+}
+
+.rate{
+  justify-self: right;
+  padding-right:20px;
+}

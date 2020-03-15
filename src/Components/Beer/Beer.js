@@ -21,6 +21,7 @@ const Beer = () => {
     rate:''
   }]);
 
+// We send a comment to the DB.
   const addComment = (event) => {
   event.preventDefault();
    axios.post(`${addressAPI}/comments`, {
@@ -31,6 +32,7 @@ const Beer = () => {
    });
   };
 
+  // We get comments of the selected beer from the DB.
   useEffect(() => {
     axios.get(`${addressAPI}/comments/${beerId}`)
     .then(response => {
@@ -40,6 +42,13 @@ const Beer = () => {
   },[]);
 
   console.log(comments);
+
+  let open = false;
+ 
+  let openComment = () => {
+    console.log(open)
+    return open = !open;
+  }
 
   return(
     <div>
@@ -84,15 +93,20 @@ const Beer = () => {
           <button onClick={addComment}>Envoyer</button>
         </div>
       </form>
-      {comments.map((comment, index) => {
-        return(
-          <div key={index}>
-            <h3>{comment.pseudo}</h3>
-            <p>{comment.comment}</p>
-            <p>{comment.rate}</p>
-          </div>
-        )
-      })}
+      <button onClick={openComment}>Voir les commentaires</button>
+      {open ? (
+        <div className="comments">
+        {comments.map((comment, index) => {
+          return(
+            <div key={index} className="comment">
+              <div className="pseudo">{comment.pseudo}</div>
+              <div className="rate">{comment.rate} / 10</div>
+              <div className="item3">{comment.comment}</div>
+            </div>
+          )
+        })}
+      </div> ) : null
+      }
     </div>
   );
 };
